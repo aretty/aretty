@@ -10,7 +10,6 @@
   },
   "name": "cafe24_node_project",
   "version": "1.0.0",
-  "main": "web.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
