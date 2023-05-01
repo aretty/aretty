@@ -7,14 +7,13 @@ const PORT = 8001
 
 // const io = socketIO(server);
 
-
+app.use(express.static('resources'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs')
 app.get('/', (req, res) => {
   res.render('index')
 })
 
-app.use(express.static(path.join(__dirname,"resources")))
 
 // io.on("connection",(socket) =>{
 //   socket.on("chatting",(data)=>{
