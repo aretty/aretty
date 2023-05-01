@@ -1,8 +1,9 @@
 "use strict"
 
-//모듈
+
 const express = require('express')
 const http = require("http")
+const bodyParser = require("body-parser")
 const app = express()
 
 const path = require("path")
@@ -23,8 +24,9 @@ io.on("connection",(socket) =>{
 app.set('views', __dirname + '/src/views')
 app.set('view engine', 'ejs')
 
-app.use(express.static(path.join(__dirname,"public")))
-
+app.use(express.static(path.join(__dirname,"src","public")))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended : true }));
 app.use("/",page) //use -> 미들웨어 등록
 
 server.listen(PORT, () => {
