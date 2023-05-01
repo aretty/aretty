@@ -1,13 +1,15 @@
+"use strict"
+
 const express = require('express')
 const http = require("http")
 const app = express()
 const path = require("path")
 const PORT = 8001
 const socketIO = require("socket.io")
+const page = require("./routes/page")
 
 const server = http.createServer(app)
 const io = socketIO(server);
-
 
 io.on("connection",(socket) =>{
   socket.on("chatting",(data)=>{
@@ -20,13 +22,7 @@ app.set('view engine', 'ejs')
 
 app.use(express.static(path.join(__dirname,"public")))
 
-app.get('/', (req, res) => {
-  res.render('index')
-})
-
-app.get('/login', (req, res) => {
-  res.render('login')
-})
+app.use("/",page) //use -> 미들웨어 등록
 
 server.listen(PORT, () => {
     console.log(`server started on PORT ${PORT}`)
