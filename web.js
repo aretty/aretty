@@ -1,11 +1,11 @@
 const express = require('express')
-const http = require("http")
+// const http = require("http")
 const app = express()
 const PORT = 8001
-const server = http.createServer(app)
-const socketIO = require("socket.io")
+// const server = http.createServer(app)
+// const socketIO = require("socket.io")
 
-const io = socketIO(server);
+// const io = socketIO(server);
 
 
 app.set('views', __dirname + '/views');
@@ -14,11 +14,11 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
-io.on("connection",(socket) =>{
-  socket.on("chatting",(data)=>{
-      io.emit("chatting",data)
-  })
-})
+// io.on("connection",(socket) =>{
+//   socket.on("chatting",(data)=>{
+//       io.emit("chatting",data)
+//   })
+// })
 
 
 app.listen(PORT, () => {
