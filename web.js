@@ -8,7 +8,7 @@ const app = express()
 const path = require("path")
 const PORT = 8001
 const socketIO = require("socket.io")
-const page = require("./routes/page") //라우팅
+const page = require("./src/routes/page") //라우팅
 
 const server = http.createServer(app)
 const io = socketIO(server);
@@ -20,7 +20,7 @@ io.on("connection",(socket) =>{
 })
 
 //앱 세팅
-app.set('views', __dirname + '/views')
+app.set('views', __dirname + '/src/views')
 app.set('view engine', 'ejs')
 
 app.use(express.static(path.join(__dirname,"public")))
