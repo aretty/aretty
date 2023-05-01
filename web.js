@@ -14,6 +14,8 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.use(express.static(path.join(__dirname,"resources")))
+
 // io.on("connection",(socket) =>{
 //   socket.on("chatting",(data)=>{
 //       io.emit("chatting",data)
