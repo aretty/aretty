@@ -1,4 +1,7 @@
 "use strict"
+
+const test = 'aa';
+console.log(test)
 // "use strict"
 
 // const socket = io();
@@ -21,4 +24,3 @@
 //     li.innerText = `${data.name}님이 - ${data.msg}`;
 //     chatList.appendChild(li)
 // })
-console.log('test')
