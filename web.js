@@ -24,6 +24,9 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/login', (req, res) => {
+  res.render('login')
+})
 
 server.listen(PORT, () => {
     console.log(`server started on PORT ${PORT}`)
