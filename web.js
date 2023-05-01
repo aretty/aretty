@@ -8,7 +8,7 @@ const PORT = 8001
 
 // const io = socketIO(server);
 
-app.use(express.static(path.join(__dirname,"resources")))
+app.use(express.static(path.join(__dirname,"public")))
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 app.get('/', (req, res) => {
