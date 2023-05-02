@@ -10,5 +10,6 @@ router.get('/login', controller.output.login)
 router.get('/register', controller.output.register)
 
 router.post('/login', controller.process.login)
+router.post('/register', controller.process.register)
 
 module.exports = router;
