@@ -27,7 +27,7 @@ class UserStorage {
     }
 
     static getUserInfo(id){
-        return fs.readFile("../src/databases/users.json")
+        return fs.readFile("../databases/users.json")
         .then((data) => {
             return this.#getUserInfo(data, id);
         })
