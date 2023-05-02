@@ -7,10 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id="id" placeholder="아이디">
-    <input type="text" id="password" placeholder="비밀번호">
-    <button type="button">로그인</button>
+    <link rel="stylesheet" href="/css/login.css">
+    <div class="login-page">
+        <div class="form">
+          <form class="login-form">
+            <input type="text" id="id" placeholder="아이디"/>
+            <input type="password" id="password" placeholder="비밀번호"/>
+            <button>login</button>
+            <p class="message">Not registered? <a href="/register">Create an account</a></p>
+          </form>
+        </div>
+    </div>
 
     <script src="/js/login.js"></script>
 </body>
 </html>
+
+<!-- Copyright (c) 2023 by Aigars Silkalns (https://codepen.io/colorlib/pen/rxddKy) -->
