@@ -14,7 +14,7 @@ class UserStorage {
 
         return userInfo;
     }
-
+    
     static getUsers(...fields) {
         //const users = this.#users;
         const newUsers = fields.reduce((newUsers, field) => {
@@ -27,7 +27,7 @@ class UserStorage {
     }
 
     static getUserInfo(id){
-        return fs.readFile("../databases/users.json")
+        return fs.readFile("/home/hosting_users/aretty/apps/aretty_aretty/src/databases/users.json")
         .then((data) => {
             return this.#getUserInfo(data, id);
         })
