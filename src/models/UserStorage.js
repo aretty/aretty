@@ -14,9 +14,12 @@ class UserStorage {
 
         return userInfo;
     }
-    
-    static getUsers(...fields) {
-        //const users = this.#users;
+
+    static #getUsers(data, isAll, fields) {
+        const users = JSON.parse(data);
+
+        if(isAll) return users;
+
         const newUsers = fields.reduce((newUsers, field) => {
             if(users.hasOwnProperty(field)){
                 newUsers[field] = users[field];
@@ -24,6 +27,14 @@ class UserStorage {
             return newUsers;
         }, {});
         return newUsers;
+    }
+    
+    static getUsers(srcPath,isAll,...fields) {
+        return fs.readFile(srcPath)
+        .then((data) => {
+            return this.#getUsers(data, isAll, fields);
+        })
+        .catch(console.error);   
     }
 
     static getUserInfo(srcPath,id){
@@ -34,12 +45,16 @@ class UserStorage {
         .catch(console.error);        
     }
 
-    static save(userInfo){
-        // const users = this.#users;
+    static async save(srcPath, userInfo){
+        const users = await this.getUsers(srcPath,true);
+        if(users.id.includes(userInfo.id)){
+            throw "이미 가입된 회원입니다.";
+        }
         users.id.push(userInfo.id);
         users.name.push(userInfo.name);
         users.password.push(userInfo.password);
-        console.log(users);
+        fs.writeFile(srcPath, JSON.stringify(users));
+        return { success : true };
     }
 }
 

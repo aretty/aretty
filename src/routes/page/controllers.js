@@ -27,9 +27,16 @@ const process = {
         const response = await user.login(serverType);
         return res.json(response);
     },
-    register : (req,res) => {
+    register : async (req,res) => {
+        const currentDomain = req.headers.host;
+        var serverType = "cafe24";
+
+        if(currentDomain.substring(0,5) == 'local'){
+            serverType = "local";
+        }
+
         const user = new User(req.body);
-        const response = user.register();
+        const response = await user.register(serverType);
         return res.json(response);
     }
 }

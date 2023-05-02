@@ -27,9 +27,20 @@ class User {
         return { success : false, msg : "존재하지 않는 아이디입니다." };
     }
 
-    register() {
+    async register(serverType) {
+        if(serverType == "local"){
+            var srcPath = "./src/databases/users.json";
+        } else {
+            var srcPath = "/home/hosting_users/aretty/apps/aretty_aretty/src/databases/users.json";
+        }
+
         const client = this.body;
-        UserStorage.save(client)
+        try{
+            const response = await UserStorage.save(srcPath, client)
+            return response;
+        } catch (err){
+            return { success : false, msg : err };
+        }
     }
 }
 
