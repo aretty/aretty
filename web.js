@@ -24,6 +24,8 @@ app.set('views', __dirname + '/src/views')
 app.set('view engine', 'ejs')
 
 app.use(express.static(path.join(__dirname,"src","public")))
+app.use(express.static(path.join(__dirname,"src","databases")))
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
 app.use("/",page) //use -> 미들웨어 등록
@@ -31,4 +33,6 @@ app.use("/",page) //use -> 미들웨어 등록
 server.listen(PORT, () => {
     console.log(`server started on PORT ${PORT}`)
 })
+
+// /home/hosting_users/aretty/apps/aretty_aretty
 // web.js
