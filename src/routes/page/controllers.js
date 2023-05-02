@@ -4,6 +4,8 @@ const User = require("../../models/User")
 
 const output = {
     main : (req, res) => {
+        const currentDomain = req.headers.host;
+        console.log('Current Domain:', currentDomain);
         res.render('index')
     },
     login : (req, res) => {
