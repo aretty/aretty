@@ -26,8 +26,8 @@ class UserStorage {
         return newUsers;
     }
 
-    static getUserInfo(id){
-        return fs.readFile("/home/hosting_users/aretty/apps/aretty_aretty/src/databases/users.json")
+    static getUserInfo(srcPath,id){
+        return fs.readFile(srcPath)
         .then((data) => {
             return this.#getUserInfo(data, id);
         })

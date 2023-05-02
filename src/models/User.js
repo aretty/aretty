@@ -8,9 +8,15 @@ class User {
         this.body = body;
     }
 
-    async login() {
+    async login(serverType) {
+        if(serverType == "local"){
+            var srcPath = "./src/databases/users.json";
+        } else {
+            var srcPath = "/home/hosting_users/aretty/apps/aretty_aretty/src/databases/users.json";
+        }
+
         const client = this.body;
-        const { id, password } = await UserStorage.getUserInfo(client.id) 
+        const { id, password } = await UserStorage.getUserInfo(srcPath,client.id) 
 
         if(id){
             if(id === client.id && password === client.password){

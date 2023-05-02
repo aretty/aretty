@@ -4,8 +4,6 @@ const User = require("../../models/User")
 
 const output = {
     main : (req, res) => {
-        const currentDomain = req.headers.host;
-        console.log('Current Domain:', currentDomain);
         res.render('index')
     },
     login : (req, res) => {
@@ -18,8 +16,15 @@ const output = {
 
 const process = {
     login : async (req,res) => {
+        const currentDomain = req.headers.host;
+        var serverType = "cafe24";
+
+        if(currentDomain.substring(0,5) == 'local'){
+            serverType = "local";
+        }
+
         const user = new User(req.body);
-        const response = await user.login();
+        const response = await user.login(serverType);
         return res.json(response);
     },
     register : (req,res) => {
