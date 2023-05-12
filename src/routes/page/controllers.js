@@ -11,6 +11,9 @@ const output = {
     },
     register : (req, res) => {
         res.render('register')
+    },
+    test : (req,res) => {
+        res.render('test')
     }
 };
 
